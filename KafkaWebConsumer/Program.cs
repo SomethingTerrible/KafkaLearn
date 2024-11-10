@@ -4,7 +4,6 @@ using Confluent.SchemaRegistry;
 using Confluent.SchemaRegistry.Serdes;
 using KafkaLearn.Models;
 using KafkaWebConsumer.Consumers;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddLogging();
+
+//todo попробовать переписать с использованием AddOption. 
 
 builder.Services.Configure<SchemaRegistryConfig>(builder.Configuration.GetSection("KafkaSettings:SchemaRegistry").Bind);
 builder.Services.Configure<ConsumerConfig>(builder.Configuration.GetSection("KafkaSettings:ConsumerSettings").Bind);

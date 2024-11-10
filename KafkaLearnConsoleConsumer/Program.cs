@@ -34,7 +34,7 @@ while (!cts.IsCancellationRequested)
 
 		var user = JsonSerializer.Deserialize<UserDto>(consumerResult.Message.Value);
 
-        Console.WriteLine($"Получено сообщение: {user.UserName} {user.Password} {user.Email}");
+        Console.WriteLine($"Получено сообщение: {user!.UserName} {user.Password} {user.Email}");
 
         consumer.Commit(consumerResult);
 	}
